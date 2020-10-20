@@ -41,7 +41,7 @@ function table_users(){
 	ob_start();
 	?>
 
-	<table>
+	<table class="table">
 		<thead>
 			<tr>
 				<th>No. </th>
@@ -67,3 +67,14 @@ function table_users(){
 	<?php 
 	return ob_get_clean();
 }
+
+// Load CSS and JS 
+
+function assets(){
+	wp_enqueue_style('my-css', plugins_url('css/style.css', __FILE__));
+	wp_enqueue_script('my-js', plugins_url('js/custom.js', __FILE__));
+}
+
+// add_action('admin_init', 'assets');
+
+add_action('wp_enqueue_scripts', 'assets');
